@@ -13,15 +13,15 @@ export class ProductMapper {
       price: item.attributes.price,
     }));
   }
-  static toOnlyOneProduct(responseData: ProductGetData): Product {
+  static toOnlyOneProduct(responseData: { data: ProductGetData }): Product {
     return {
-      id: responseData.idProduct,
-      name: responseData.attributes.name,
-      description: responseData.attributes.description,
-      stock: responseData.attributes.stock,
-      price: responseData.attributes.price,
+      id: responseData.data.idProduct,
+      name: responseData.data.attributes.name,
+      description: responseData.data.attributes.description,
+      stock: responseData.data.attributes.stock,
+      price: responseData.data.attributes.price,
     };
-  }
+}
   static toBooleanStatus(responseData: ProductDeleteData): boolean {
     return responseData.state;
   }

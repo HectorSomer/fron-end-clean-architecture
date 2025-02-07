@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class CreateProductUseCaseService {
 
   constructor(readonly productRepository : ProductRepository) { }
-  createProductUseCase(product: Product): Observable<Product>{
+  execute(product: Product): Observable<Product>{
     return this.productRepository.saveNewProduct(product);
   }
 }

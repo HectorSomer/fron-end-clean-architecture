@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class GetProductControllerService {
 
   constructor(readonly useCase: GetProductUseCaseService) { }
-  getProduct(): Observable<Product[]> {
+  getProducts(): Observable<Product[]> {
     return this.useCase.execute().pipe(
       catchError(error => {
         return throwError(() => error);

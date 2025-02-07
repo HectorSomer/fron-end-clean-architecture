@@ -1,0 +1,19 @@
+<div class="modal-overlay">
+    <form class="modal" [formGroup]="formProduct">
+      <h2>Formulario de Producto</h2>
+      <label >Nombre:</label>
+      <input type="text" formControlName="name"/>
+      <label>Descripción:</label>
+      <textarea formControlName="description"></textarea>
+      <label>Precio:</label>
+      <input type="number" formControlName="price"/>
+  
+      <label>Stock:</label>
+      <input type="number" formControlName="stock"/>
+  
+      <div class="modal-actions">
+        <button (click)="close.emit()">Cancelar</button>
+        <button (click)="saveProduct()">Guardar</button>
+      </div>
+    </form>
+  </div>

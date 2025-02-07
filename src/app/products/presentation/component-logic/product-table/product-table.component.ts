@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Product } from '../../../domain/entities/product';
 import { GetProductControllerService } from '../../../infraestructure/controllers/get-product-controller.service';
@@ -10,15 +10,17 @@ import { GetProductControllerService } from '../../../infraestructure/controller
   styleUrl: './product-table.component.css'
 })
 export class ProductTableComponent implements OnInit{
- products: Product[] | null= [];
+ @Input() products: Product[] = [];
+ @Output() loadProducts = new EventEmitter<Product[]>();
  constructor(readonly getProductController: GetProductControllerService){}
  ngOnInit(): void {
-    this.getProductController.getProduct().subscribe({
+    this.getProductController.getProducts().subscribe({
       next: products => {
         this.products = products;  
+        this.loadProducts.emit(this.products);
       },
       error: err => {
-        alert('Error al cargar productos' + JSON.stringify(err));
+        alert('Error al cargar productos' + err);
       }
     });
  }

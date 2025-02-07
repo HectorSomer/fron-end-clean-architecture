@@ -14,23 +14,28 @@ import { ProductUpdate } from '../../domain/entities/productUpdate';
 //en el pdf explico el por qué de esto, ya que inyectable, se supone es para ls clases
 //que se inyectan, vaya, pues esta se inyecta en app.config, más no en otra parte
 export class ProductApiReposiorieService implements ProductRepository {
-  private apiUrl = 'http://localhost:8080/v1/products';
+  private apiUrl = 'http://localhost:8080/v1/products/';
 
   constructor(readonly http: HttpClient) {} 
 
   getAllProducts(): Observable<Product[]> {
-    return this.http.get<ProductGetData[]>(this.apiUrl).pipe(
-      map(response => response ? ProductMapper.toProducts(response) : []), // principio de única responsabilidad
+    return this.http.get<{ data: ProductGetData[] }>(this.apiUrl).pipe(
+      map(response => response.data ? ProductMapper.toProducts(response.data) : []),
       catchError(error => throwError(() => error))
     );
   }
 
   saveNewProduct(product: Product): Observable<Product> {
-    return this.http.post<ProductGetData>(this.apiUrl, product).pipe(
-      map(response => ProductMapper.toOnlyOneProduct(response)),  
-      catchError(error => throwError(() => error))
+    return this.http.post<{ data: ProductGetData }>(this.apiUrl, product).pipe(
+      map(response => {
+        return ProductMapper.toOnlyOneProduct(response);
+      }),  
+      catchError(error => {
+        console.error("Error en saveNewProduct:", error);
+        return throwError(() => error);
+      })
     );
-  }
+}
 
   deleteProduct(id: number): Observable<boolean> {
     return this.http.delete<ProductDeleteData>(`${this.apiUrl}/${id}`).pipe(
