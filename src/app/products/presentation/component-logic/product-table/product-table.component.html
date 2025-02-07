@@ -1,0 +1,23 @@
+<div class="card">
+  <div class="card__title">Tabla</div>
+  <div class="card__data">
+    <div class="card__info">
+      <div class="item_title">ID</div>
+      <div class="item_title">Nombre</div>
+      <div class="item_title">Descripción</div>
+      <div class="item_title">Precio</div>
+      <div class="item_title">Cantidad</div>
+      <div class="item_title">Eliminar</div>
+      <div class="item_title">Editar</div>
+    </div>
+    <div *ngFor="let product of products; let i = index" class="card__info">
+      <div class="item">{{product.id}}</div>
+      <div class="item">{{product.name}}</div>
+      <div class="item">{{product.description}}</div>
+      <div class="item">{{product.price}}</div>
+      <div class="item">{{product.stock}}</div>
+      <div class="item"><img id="img_delete" src="./assets/delete.png" alt=""></div>
+      <div class="item"><img id="img_edit" src="./assets/edit.png" alt=""></div>
+    </div>
+  </div>
+</div>

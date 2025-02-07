@@ -1,0 +1,65 @@
+.card {
+  width: 100%;
+  background: #417c43;
+  font-family: "Courier New", Courier, monospace;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card__title {
+  color: white;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-bottom: 1px solid rgb(167, 159, 159);
+  font-size: 1rem;
+  text-align: center;
+}
+
+.card__body {
+  display: flex;
+  flex-direction: column;
+}
+
+.card__info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid rgb(203, 203, 203);
+}
+
+.item {
+  padding: 10px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20vh;
+}
+.item_title {
+  padding: 10px;
+  background-color: rgb(223, 222, 222);
+  display: flex;
+  justify-content: center;
+  width: 20vh;
+  align-items: center;
+}
+.item_title:nth-child(even){
+  background: rgb(183, 185, 183);
+}
+.item:nth-child(even) {
+  background: rgb(234, 235, 234);
+}
+#img_edit{
+  width: 5vh;
+  height: 5vh;
+  cursor: pointer;
+}
+#img_delete{
+  width: 50%;
+  height: 100%;
+  cursor: pointer;
+}
+img:hover{
+  transform: scale(1.1);
+}
