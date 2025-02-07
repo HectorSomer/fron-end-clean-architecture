@@ -11,8 +11,6 @@ import { ProductUpdateData } from '../../domain/entities/data/product_update_dat
 import { ProductUpdate } from '../../domain/entities/productUpdate';
 
 @Injectable({ providedIn: 'root' }) 
-//en el pdf explico el por qué de esto, ya que inyectable, se supone es para ls clases
-//que se inyectan, vaya, pues esta se inyecta en app.config, más no en otra parte
 export class ProductApiReposiorieService implements ProductRepository {
   private apiUrl = 'http://localhost:8080/v1/products/';
 
@@ -38,15 +36,15 @@ export class ProductApiReposiorieService implements ProductRepository {
 }
 
   deleteProduct(id: number): Observable<boolean> {
-    return this.http.delete<ProductDeleteData>(`${this.apiUrl}/${id}`).pipe(
+    return this.http.delete<ProductDeleteData>(`${this.apiUrl}${id}`).pipe(
       map(response => ProductMapper.toBooleanStatus(response)),  
       catchError(error => throwError(() => error))
     );
   }
 
   updateProduct(id: number, product: ProductUpdate): Observable<Product> {
-    return this.http.put<ProductUpdateData>(`${this.apiUrl}/${id}`, product).pipe(
-      map(response => ProductMapper.updateToProduct(response)),  
+    return this.http.put<{data: ProductUpdateData}>(`${this.apiUrl}${id}`, product).pipe(
+      map(response => ProductMapper.updateToProduct(response.data)),  
       catchError(error => throwError(() => error))
     );
   }

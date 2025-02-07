@@ -1,6 +1,7 @@
 <app-header-product></app-header-product>
 <app-add-form *ngIf="isOpenModal" (close)="closeModal()" (productAdd)="newProduct($event)"></app-add-form>
+<app-edit-form *ngIf="isOpenModalEdit" (closeEdit)="closeModalEdit()" [info]="info" (productEdit)="edit($event)"></app-edit-form>
 <app-button-add (open)="openModal()"></app-button-add>
 <div id="area">
-    <app-product-table [products]="products" (loadProducts)="loadProducts($event)"></app-product-table>
+    <app-product-table (idProduct)="openModalEdit($event)" [products]="products" (loadProducts)="loadProducts($event)"></app-product-table>
 </div>

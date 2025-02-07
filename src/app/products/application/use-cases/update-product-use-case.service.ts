@@ -11,7 +11,7 @@ export class UpdateProductUseCaseService {
 
   }
 
-  updateProductUseCase(id: number, product: Product){
+  execute(id: number, product: Product){
     return this.productRepository.updateProduct(id, product);
   }
 }
