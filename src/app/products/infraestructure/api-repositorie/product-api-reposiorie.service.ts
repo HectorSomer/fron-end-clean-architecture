@@ -4,10 +4,10 @@ import { Observable, throwError } from 'rxjs';
 import { ProductRepository } from '../../domain/repositories/product_repository';
 import { Product } from '../../domain/entities/product';
 import { catchError, map } from 'rxjs/operators';
-import { ProductGetData } from '../../domain/entities/data/product_get_data';
-import { ProductMapper } from '../../application/mappers/mapper';
-import { ProductDeleteData } from '../../domain/entities/data/product_delete_data';
-import { ProductUpdateData } from '../../domain/entities/data/product_update_data';
+import { ProductGetData } from '../data/product_get_data';
+import { ProductMapper } from '../mappers/mapper';
+import { ProductDeleteData } from '../data/product_delete_data';
+import { ProductUpdateData } from '../data/product_update_data';
 import { ProductUpdate } from '../../domain/entities/productUpdate';
 
 @Injectable({ providedIn: 'root' }) 
@@ -29,7 +29,6 @@ export class ProductApiReposiorieService implements ProductRepository {
         return ProductMapper.toOnlyOneProduct(response);
       }),  
       catchError(error => {
-        console.error("Error en saveNewProduct:", error);
         return throwError(() => error);
       })
     );

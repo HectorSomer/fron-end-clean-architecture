@@ -1,7 +1,7 @@
 import { Product } from "../../domain/entities/product";
-import { ProductDeleteData } from "../../domain/entities/data/product_delete_data";
-import { ProductGetData } from "../../domain/entities/data/product_get_data";
-import { ProductUpdateData } from "../../domain/entities/data/product_update_data";
+import { ProductDeleteData } from "../data/product_delete_data";
+import { ProductGetData } from "../data/product_get_data";
+import { ProductUpdateData } from "../data/product_update_data";
 
 export class ProductMapper {
   static toProducts(responseData: ProductGetData[]): Product[] {

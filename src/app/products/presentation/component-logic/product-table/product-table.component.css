@@ -4,6 +4,7 @@
   font-family: "Courier New", Courier, monospace;
   border-radius: 12px;
   overflow: hidden;
+  border: 1px solid #417c43;
 }
 
 .card__title {

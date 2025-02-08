@@ -16,7 +16,7 @@ export class ProductTableComponent implements OnInit {
   @Output() loadProducts = new EventEmitter<Product[]>();
   @Output() modalEdit = new EventEmitter<void>();
   @Output() idProduct = new EventEmitter<{ productId: number, i: number }>();
-  productDeleted = false; 
+  productDeleted = false;
   constructor(readonly getProductController: GetProductControllerService, readonly deleteProductController: DeleteProductControllerService) {}
 
   ngOnInit(): void {
