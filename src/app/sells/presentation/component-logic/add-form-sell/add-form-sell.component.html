@@ -1,0 +1,15 @@
+<div class="modal-overlay">
+    <form class="modal" [formGroup]="formSell">
+      <h2>Agregue la venta</h2>
+      <label >Concepto:</label>
+      <input type="text" formControlName="concept"/>
+      <label>Fecha:</label>
+      <textarea formControlName="date"></textarea>
+      <label>Precio total:</label>
+      <input type="number" formControlName="total_price"/>
+      <div class="modal-actions">
+        <button (click)="close.emit()">Cancelar</button>
+        <button (click)="saveSell()">Guardar</button>
+      </div>
+    </form>
+  </div>

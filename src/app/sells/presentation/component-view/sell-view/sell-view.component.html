@@ -1,1 +1,7 @@
 <app-sell-header></app-sell-header>
+<app-add-form-sell *ngIf="isOpenModal" (close)="closeModal()" (sellAdd)="newSell($event)"></app-add-form-sell>
+<app-edit-sell-form *ngIf="isOpenModalEdit" (closeEdit)="closeModalEdit()" [info]="info" (sellEdit)="edit($event)"></app-edit-sell-form>
+<app-button-add-sell (open)="openModal()"></app-button-add-sell>
+<div id="area">
+    <app-sell-table (idSell)="openModalEdit($event)" [sells]="sells" (loadSells)="loadSells($event)"></app-sell-table>
+</div>

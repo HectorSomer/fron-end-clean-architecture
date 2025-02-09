@@ -1,0 +1,21 @@
+<div class="card">
+    <div class="card__title">Ventas</div>
+    <div class="card__data">
+      <div class="card__info">
+        <div class="item_title">ID</div>
+        <div class="item_title">Concepto</div>
+        <div class="item_title">Fecha</div>
+        <div class="item_title">Precio Total</div>
+        <div class="item_title">Eliminar</div>
+        <div class="item_title">Editar</div>
+      </div>
+      <div *ngFor="let sell of sells; let i = index" class="card__info">
+        <div class="item">{{sell.sell_id}}</div>
+        <div class="item">{{sell.concept}}</div>
+        <div class="item">{{sell.date}}</div>
+        <div class="item">{{sell.total_price}}</div>
+        <div class="item" (click)="delete(sell.sell_id!, i)"><img id="img_delete" src="./assets/delete.png" alt=""></div>
+        <div class="item" (click)="edit(sell.sell_id!, i)"><img id="img_edit" src="./assets/edit.png" alt=""></div>
+      </div>
+    </div>
+  </div>

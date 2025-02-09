@@ -1,5 +1,5 @@
 export interface Sell{
-sell_id: number, 
+sell_id?: number, 
 concept: string, 
 date: string,
 total_price: number
